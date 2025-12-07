@@ -117,7 +117,7 @@ let updateVehicle = async (req: Request,res: Response) =>{
 
     try{
 
-        let result = await vehicleServices.updateVehicle(vehicle_name,daily_rent_price,availability_status,req.params.id!);
+        let result = await vehicleServices.updateVehicle(req.body,req.params.id!);
 // vehicle_name: string,daily_rent_price:string,availability_status:Boolean
         if(result.rows.length === 0){
             res.status(404).json({

@@ -3,7 +3,8 @@ import express,{NextFunction, Request,Response} from "express";
 import config from "./config";
 import initDB from "./config/db";
 import { logger } from "./middleware/logger";
-import { useRoutes } from "./modules/vehicles/vehicles.routes";
+import {  vehicleRoutes } from "./modules/vehicles/vehicles.routes";
+import { userRoutes } from "./modules/users/users.routes";
 // import initDB, { pool } from "./config/db";
 
 
@@ -23,11 +24,11 @@ app.get("/", logger, (req: Request, res: Response) => {
   res.send("Hello Next Level Developers!");
 });
 // users operation:
-app.use("/api/v1/vehicles",useRoutes);
+app.use("/api/v1/vehicles",vehicleRoutes);
 // /api/v1/vehicles
 // // todo CRUD OPERATION::
 // app.use("/todos",todoRoutes);
-
+app.use("/api/v1/users",userRoutes);
 // //   AUTH ROUTES:
 
 // app.use("/auth", authRoutes);
