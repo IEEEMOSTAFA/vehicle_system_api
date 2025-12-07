@@ -1,3 +1,30 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { Pool } from "pg";
 import config from ".";
 
@@ -27,7 +54,6 @@ let initDB = async () => {
       registration_number TEXT NOT NULL UNIQUE,
       daily_rent_price NUMERIC CHECK (daily_rent_price > 0),
       availability_status TEXT NOT NULL CHECK (availability_status IN ('available','booked'))
-      
     );
   `);
 
@@ -39,8 +65,8 @@ let initDB = async () => {
       vehicle_id INTEGER NOT NULL REFERENCES vehicles(id) ON DELETE CASCADE,
       rent_start_date DATE NOT NULL,
       rent_end_date DATE NOT NULL,
+      total_price NUMERIC NOT NULL CHECK (total_price > 0),
       status TEXT NOT NULL CHECK (status IN ('active','cancelled','returned'))
-      
     );
   `);
 };

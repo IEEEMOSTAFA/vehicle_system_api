@@ -5,6 +5,8 @@ import initDB from "./config/db";
 import { logger } from "./middleware/logger";
 import {  vehicleRoutes } from "./modules/vehicles/vehicles.routes";
 import { userRoutes } from "./modules/users/users.routes";
+import { bookingRoutes } from "./modules/bookings/bookings.routes";
+import { authRoutes } from "./modules/auth/auth.routes";
 // import initDB, { pool } from "./config/db";
 
 
@@ -23,17 +25,17 @@ initDB()
 app.get("/", logger, (req: Request, res: Response) => {
   res.send("Hello Next Level Developers!");
 });
-// users operation:
+
 app.use("/api/v1/vehicles",vehicleRoutes);
 // /api/v1/vehicles
-// // todo CRUD OPERATION::
-// app.use("/todos",todoRoutes);
+app.use("/api/v1/bookings", bookingRoutes);
+
 app.use("/api/v1/users",userRoutes);
-// //   AUTH ROUTES:
-
-// app.use("/auth", authRoutes);
 
 
+
+
+app.use("/api/v1/auth",authRoutes)
 
 
 // Not Found Route Operation:
