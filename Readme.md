@@ -1,80 +1,76 @@
 
 
  
- Deploy Link:: vehicle-system-dm9htps5q-ieee-mostafas-projects.vercel.app
+ 🚗 Vehicle System API
 
+A production-ready Vehicle Rental Management API built using Node.js, Express, TypeScript, and PostgreSQL, with complete JWT authentication and role-based access control.
 
+🚀 Live API (Deployed)
 
+Base URL:
+🔗 https://vehicle-system-dm9htps5q-ieee-mostafas-projects.vercel.app
 
+📦 Project Name
 
+vehicle_system_api
 
+📥 How to Use This Project
 
+Follow these steps to clone and run the project locally.
 
+🔧 1. Clone the Repository
+git clone https://github.com/IEEEMOSTAFA/vehicle_system_api.git
 
+📂 2. Go Inside the Project Folder
+cd vehicle_system_api
 
-
-
-
--> In this project Name: vehicle_system_api
-
-Install Dependencies
-Production Dependencies
+📦 3. Install Dependencies
+✔️ Production Packages
 npm install bcryptjs dotenv express jsonwebtoken pg
 
-Installed Packages
+
+Installed:
 
 bcryptjs → Password hashing
 
-dotenv → Load .env variables
+dotenv → Environment variables
 
-express → Main HTTP framework
+express → Web framework
 
 jsonwebtoken → JWT authentication
 
-pg → PostgreSQL database driver
+pg → PostgreSQL driver
 
- Install Development Dependencies
+🔧 Development Packages
 npm install -D @types/express @types/jsonwebtoken @types/node @types/pg tsx typescript
 
-Installed Dev Tools
+
+Installed Dev Tools:
 
 typescript → TypeScript compiler
 
 tsx → Fast TypeScript runner
 
-@types/* → Required TypeScript type definitions
+@types/* → Required TypeScript definitions
 
-If you use this Project : You must follow this role:
+🔐 4. Create a .env File
 
-📥 Clone This Project
-
-Follow these steps to download and run the project on your system.
-
-✅ 1. Clone the Repository
-
-Run the following command in your terminal:
-
-git clone https://github.com/IEEEMOSTAFA/vehicle_system_api.git
-
-✅ 2. Go Inside the Project Folder
-cd vehicle_system_api
-
-✅ 3. Install All Dependencies
-npm install
-
-✅ 4. Create a .env File
-
-Create a new .env file in the project root:
+Create a .env file in the project root:
 
 PORT=5000
 DATABASE_URL=postgresql://user:password@localhost:5432/vehicle_system
 JWT_SECRET=YOUR_SECRET_KEY
 
-✅ 5. Start Development Server
+
+Make sure your PostgreSQL database exists:
+
+CREATE DATABASE vehicle_system;
+
+▶️ 5. Start Development Server
 npm run dev
 
-📦 6. Build the Project (for production)
-npm run build
 
-▶️ 7. Run Production Build
-npm start
+Project will run using tsx with hot reload.
+
+📦 6. Build for Production
+npm run build
