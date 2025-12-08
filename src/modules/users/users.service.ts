@@ -1,18 +1,16 @@
-
-
 import { pool } from "../../config/db";
 
 const getUser = async () => {
+   
     const result = await pool.query(`
-        SELECT * 
+        SELECT id, name, email, phone, role 
         FROM users 
-        
+       
     `);
     return result;
 }
 
 const getSingleUser = async (id: string) => {
-    // Fixed: Changed from 'vehicles' to 'users' table
     const result = await pool.query(`
         SELECT id, name, email, phone, role 
         FROM users 
@@ -24,27 +22,27 @@ const getSingleUser = async (id: string) => {
 const updateUser = async (payload: Record<string, unknown>, id: string, role: string, userId: number) => {
     const { name, email, phone, role: newRole } = payload;
 
-    // Check if user exists
+//user exists
     const userCheck = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
     
     if (userCheck.rows.length === 0) {
         throw new Error("User not found");
     }
 
-    // Customer can only update their own profile (not role)
+// Customer  role check
     if (role === "customer") {
         if (Number(id) !== userId) {
             throw new Error("You can only update your own profile");
         }
         
         if (newRole) {
-            throw new Error("Customers cannot change their role");
+            throw new Error("Customers cannot change their role.Here Allow only admin...");
         }
 
-        // Update only name, email, phone for customers
+//Customer>>>  Update   name, email, phone 
         const result = await pool.query(`
             UPDATE users 
-            SET name = $1,email = $2, phone = $3 
+            SET name = $1, email = $2, phone = $3
             WHERE id = $4 
             RETURNING id, name, email, phone, role
         `, [name, email, phone, id]);
@@ -52,14 +50,14 @@ const updateUser = async (payload: Record<string, unknown>, id: string, role: st
         return result;
     }
 
-    // Admin can update any user including role
+// Admin update role
     if (role === "admin") {
         const result = await pool.query(`
             UPDATE users 
-            SET name = $1,email = $2, phone = $3 ,role = $4
+            SET name = $1,email = $2,phone = $3, role = $4                
             WHERE id = $5 
-            RETURNING *
-        `, [name, email, phone, role, id]);
+            RETURNING id, name, email, phone, role
+        `, [name, email, phone, newRole, id]);
 
         return result;
     }
@@ -68,17 +66,17 @@ const updateUser = async (payload: Record<string, unknown>, id: string, role: st
 }
 
 const deleteUser = async (id: string) => {
-    // Check if user has any active bookings
-    // const activeBookings = await pool.query(`
-    //     SELECT * FROM bookings 
-    //     WHERE customer_id = $1 AND status = 'active'
-    // `, [id]);
+    // active bookings
+    const activeBookings = await pool.query(`
+        SELECT * FROM bookings 
+        WHERE customer_id = $1 AND status = 'active'
+    `, [id]);
 
-    // if (activeBookings.rows.length > 0) {
-    //     throw new Error("Cannot delete user with active bookings");
-    // }
+    if (activeBookings.rows.length > 0) {
+        throw new Error("Cannot delete user with active bookings");
+    }
 
-    // Check if user exists before deleting
+    //  user exists  deleting 
     const userCheck = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
     
     if (userCheck.rows.length === 0) {
@@ -95,3 +93,13 @@ export const userServices = {
     updateUser,
     deleteUser
 }
+
+
+
+
+
+
+
+
+
+

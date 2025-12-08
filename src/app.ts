@@ -23,23 +23,18 @@ app.use(express.json());
 initDB()
 // "/" -> localhost:5000/
 app.get("/", logger, (req: Request, res: Response) => {
-  res.send("Hello Next Level Developers!");
+  res.send("Welcome to Vehicle System API.....!");
 });
 
 app.use("/api/v1/vehicles",vehicleRoutes);
-// /api/v1/vehicles
+
 app.use("/api/v1/bookings", bookingRoutes);
 
 app.use("/api/v1/users",userRoutes);
 
-
-
-
 app.use("/api/v1/auth",authRoutes)
 
-
 // Not Found Route Operation:
-
 app.use((req,res) =>{
   res.status(404).json({
     success: false,

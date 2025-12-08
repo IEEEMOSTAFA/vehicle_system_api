@@ -57,12 +57,12 @@ const getBooking = async(role: string, userId: number) => {
             FROM bookings b 
             JOIN users u ON b.customer_id = u.id
             JOIN vehicles v ON b.vehicle_id = v.id
-            ORDER BY b.id DESC
+            
         `); 
         return result.rows;
     }
     else{
-        // Fixed: Added SELECT keyword
+        
         let result = await pool.query(`
             SELECT
                 b.*,
@@ -72,7 +72,7 @@ const getBooking = async(role: string, userId: number) => {
             FROM bookings b
             JOIN vehicles v ON b.vehicle_id = v.id
             WHERE b.customer_id = $1
-            ORDER BY b.id DESC    
+               
         `, [userId]);
         return result.rows;
     }
@@ -95,7 +95,7 @@ const updateBooking = async(payload: Record<string, unknown>, id: string, role: 
     let booking = bookingResult.rows[0];
 
     if(role === "customer"){
-        // Fixed: Compare userId as number
+        
         if(booking.customer_id !== userId){
             throw new Error("You can't update customer booking")
         }
