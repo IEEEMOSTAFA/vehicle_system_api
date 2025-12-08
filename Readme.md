@@ -1,31 +1,31 @@
 
 
  
- 🚗 Vehicle System API
+  Vehicle System API
 
 A production-ready Vehicle Rental Management API built using Node.js, Express, TypeScript, and PostgreSQL, with complete JWT authentication and role-based access control.
 
-🚀 Live API (Deployed)
+ Live API (Deployed)
 
 Base URL:
-🔗 https://vehicle-system-dm9htps5q-ieee-mostafas-projects.vercel.app
+ https://vehicle-system-dm9htps5q-ieee-mostafas-projects.vercel.app
 
-📦 Project Name
+ Project Name
 
 vehicle_system_api
 
-📥 How to Use This Project
+ How to Use This Project
 
 Follow these steps to clone and run the project locally.
 
-🔧 1. Clone the Repository
+ 1. Clone the Repository
 git clone https://github.com/IEEEMOSTAFA/vehicle_system_api.git
 
-📂 2. Go Inside the Project Folder
+ 2. Go Inside the Project Folder
 cd vehicle_system_api
 
-📦 3. Install Dependencies
-✔️ Production Packages
+ 3. Install Dependencies
+ Production Packages
 npm install bcryptjs dotenv express jsonwebtoken pg
 
 
@@ -41,7 +41,7 @@ jsonwebtoken → JWT authentication
 
 pg → PostgreSQL driver
 
-🔧 Development Packages
+ Development Packages
 npm install -D @types/express @types/jsonwebtoken @types/node @types/pg tsx typescript
 
 
@@ -53,7 +53,7 @@ tsx → Fast TypeScript runner
 
 @types/* → Required TypeScript definitions
 
-🔐 4. Create a .env File
+ 4. Create a .env File
 
 Create a .env file in the project root:
 
@@ -66,11 +66,11 @@ Make sure your PostgreSQL database exists:
 
 CREATE DATABASE vehicle_system;
 
-▶️ 5. Start Development Server
+ 5. Start Development Server
 npm run dev
 
 
 Project will run using tsx with hot reload.
 
-📦 6. Build for Production
+ 6. Build for Production
 npm run build
