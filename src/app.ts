@@ -7,20 +7,14 @@ import {  vehicleRoutes } from "./modules/vehicles/vehicles.routes";
 import { userRoutes } from "./modules/users/users.routes";
 import { bookingRoutes } from "./modules/bookings/bookings.routes";
 import { authRoutes } from "./modules/auth/auth.routes";
-// import initDB, { pool } from "./config/db";
-
 
 const app = express();
-
-
 
 app.use(express.json());
 
 //Database function:
-
-
-
 initDB()
+
 // "/" -> localhost:5000/
 app.get("/", logger, (req: Request, res: Response) => {
   res.send("Welcome to Vehicle System API.....!");

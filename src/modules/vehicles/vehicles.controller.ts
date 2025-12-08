@@ -42,9 +42,6 @@ let createVehicle = async(req: Request,res: Response) =>{
 let getVehicle = async(req: Request,res: Response) =>{
 
 
-    // console.log("Request Body is: ",req.body);
-
-    // let {vehicle_name,type,registration_number,daily_rent_price,availability_status} = req.body;
 
 
     try{
@@ -67,11 +64,6 @@ let getVehicle = async(req: Request,res: Response) =>{
     }}
 }
 let getSingleVehicle = async(req: Request,res: Response) =>{
-
-
-    // console.log("Request Body is: ",req.body);
-
-    // let {vehicle_name,type,registration_number,daily_rent_price,availability_status} = req.body;
 
 
     try{
@@ -110,7 +102,7 @@ let getSingleVehicle = async(req: Request,res: Response) =>{
 let updateVehicle = async (req: Request,res: Response) =>{
 
 
-    // console.log("Request Body is: ",req.body);
+    
 
     let {vehicle_name,daily_rent_price,availability_status} = req.body;
 
@@ -118,7 +110,7 @@ let updateVehicle = async (req: Request,res: Response) =>{
     try{
 
         let result = await vehicleServices.updateVehicle(req.body,req.params.id!);
-// vehicle_name: string,daily_rent_price:string,availability_status:Boolean
+
         if(result.rows.length === 0){
             res.status(404).json({
                 success:false,

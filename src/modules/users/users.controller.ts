@@ -44,7 +44,7 @@ const updateUser = async (req: Request, res: Response, next: NextFunction) => {
         const userRole = (req as any).user.role;
         const userId = (req as any).user.userId;
 
-        const result = await userServices.updateUser(payload, id, userRole, userId);
+        const result = await userServices.updateUser(payload, id!, userRole, userId);
         
         res.status(200).json({
             success: true,
